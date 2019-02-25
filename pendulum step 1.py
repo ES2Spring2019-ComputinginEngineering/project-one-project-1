@@ -26,8 +26,8 @@ def pendulum_values(run_time, init_ang_pos, init_ang_vel):
         ang_vel.append(new_ang_vel)
         new_ang_accel = (g/L) * math.sin(new_ang_pos)
         ang_accel.append(new_ang_accel)
+        print("Time" + str(i) + ", Position = " + str(ang_pos[i]) + ", Velocity = " + str(ang_vel[i]) + ", Acceleration = " + str(ang_accel[i]))
         i += 1
-    print(list_of_times, ang_pos, ang_vel, ang_accel)
     return "pendulum calculation finished at " + str(time) + " seconds"
 
 print(pendulum_values(run_time, init_ang_pos, init_ang_vel))
