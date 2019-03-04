@@ -1,23 +1,10 @@
 import math
 import matplotlib.pyplot as plt
-import numpy
 
 dt = .0001
-g = -9.81
-L = 1
 
-run_time = 20
-init_ang_pos = (math.pi)/6
-init_ang_vel = 0
-init_ang_accel = (g/L) * math.sin(init_ang_pos)
-
-# lists that will be appended
-list_of_times = [0]
-ang_pos = [init_ang_pos]
-ang_vel = [init_ang_vel]
-ang_accel = [init_ang_accel]
-
-def pendulum_values(run_time, init_ang_pos, init_ang_vel):
+def pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L,
+                    list_of_times, ang_pos, ang_vel, ang_accel):
     i = 1
     while i <= (run_time / dt):
         time = list_of_times[i-1] + dt
@@ -41,7 +28,6 @@ def plot(list_of_times, ang_pos, ang_vel, ang_accel):
     plt.title("Angular Position vs. Time")
     plt.xlim(0, 20)
     plt.grid()
-
 
     plt.subplot(5, 1, 3)
     plt.plot(list_of_times, ang_vel, 'b-')
