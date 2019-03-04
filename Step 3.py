@@ -11,7 +11,16 @@ def tilt(x, y, z):
     yradians = math.atan2(y, math.sqrt(x**2 + z**2))
     return yradians
 
-def pendulum_values(run_time, init_ang_pos, init_ang_vel, time0):
+
+def all_pendulum_values_creation(data, name, m):
+    filename = name + str(m) + ".csv"
+    file = open(filename, "a+")
+    file.write(data + "\n")
+    file.close()
+    return
+
+
+def pendulum_values(run_time, init_ang_pos, init_ang_vel, time0, m):
         i = 1
         while i <= (run_time / dt):
             list_of_times.append(running_time() - time0)
@@ -22,23 +31,19 @@ def pendulum_values(run_time, init_ang_pos, init_ang_vel, time0):
             ang_vel.append(new_ang_vel)
             new_ang_accel = (g/L) * math.sin(new_ang_pos)
             ang_accel.append(new_ang_accel)
+            all_pendulum_values_creation((running_time()-time0), "time", m)
+            all_pendulum_values_creation(new_ang_pos, "position", m)
+            all_pendulum_values_creation(new_ang_vel, "velocity", m)
+            all_pendulum_values_creation(new_ang_accel, "acceleration", m)
             i += 1
         return
-
-def all_pendulum_values_creation(array, name, m):
-    filename = name + str(m) + ".csv"
-    file = open(filename, "w+")
-    for x in array:
-        file.write(x + "\n")
-    file.close()
-    return
 
 while True:
     m = 0
     if button_a.is_pressed():
         n = 0
         time0 = running_time()
-        while ang_pos[n] != ang_pos[n-1]:
+        while True:
             x = accelerometer.get_x()
             y = accelerometer.get_y()
             z = accelerometer.get_z()
@@ -56,13 +61,8 @@ while True:
             ang_vel = [init_ang_vel]
             ang_accel = [init_ang_accel]
 
-            pendulum_values(run_time, init_ang_pos, init_ang_vel, time0)
+            pendulum_values(run_time, init_ang_pos, init_ang_vel, time0, m)
 
             n += 1
-
-        all_pendulum_values_creation(list_of_times, "time", m)
-        all_pendulum_values_creation(ang_pos, "position", m)
-        all_pendulum_values_creation(ang_vel, "velocity", m)
-        all_pendulum_values_creation(ang_accel, "acceleration", m)
 
         m += 1
