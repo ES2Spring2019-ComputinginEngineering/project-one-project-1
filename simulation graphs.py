@@ -17,5 +17,5 @@ ang_pos = [init_ang_pos]
 ang_vel = [init_ang_vel]
 ang_accel = [init_ang_accel]
 
-Simulation.pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L)
+Simulation.pendulum_values(list_of_times, run_time, init_ang_pos, init_ang_vel, g, L)
 Simulation.plot(list_of_times, ang_pos, ang_vel, ang_accel)

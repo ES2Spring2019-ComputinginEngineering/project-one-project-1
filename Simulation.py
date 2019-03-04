@@ -4,7 +4,7 @@ import numpy
 
 dt = .0001
 
-def pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L):
+def pendulum_values(list_of_times, run_time, init_ang_pos, init_ang_vel, g, L):
     i = 1
     while i <= (run_time / dt):
         time = list_of_times[i-1] + dt
