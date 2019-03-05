@@ -79,3 +79,12 @@ def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
     plt.tight_layout()
     plt.show()
     return
+
+def read_file(name, m):
+    array = []  # will be time, pos, vel, or accel; values collected by microbit
+    file = open(name + str(m) + ".csv")
+    for line in file:
+        data_pt = line.strip()
+        array.append(data_pt)
+    file.close()
+    return array
