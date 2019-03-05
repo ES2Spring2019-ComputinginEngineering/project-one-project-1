@@ -1,5 +1,6 @@
 import math
 import matplotlib.pyplot as plt
+import scipy.signal as sig
 
 dt = .0001
 
@@ -45,3 +46,11 @@ def plot(list_of_times, ang_pos, ang_vel, ang_accel):
     plt.xlim(0, 20)
     plt.grid()
     return
+
+def apply_filter(y):
+    y_filt = sig.medfilt(y)
+    return y_filt
+
+def find_peaks(y):
+    y_pks, _ = sig.find_peaks(y)
+    return y_pks
