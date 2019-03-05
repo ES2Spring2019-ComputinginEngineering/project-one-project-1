@@ -2,10 +2,13 @@ import math
 
 g = -9.81
 L = 1
-dt = .5
+# float(input("What is the length of this pendulum in meters? "))
+dt = .0001
 
-run_time = float(input("What would you like the run time of this function to be in seconds? "))
-init_ang_pos = (math.pi)/6
+# change back to have user input run time
+run_time = 20
+init_ang_pos = # this is coming from the microbit
+# have time = 0 be when button is released when pendulum is released
 init_ang_vel = 0
 init_ang_accel = (g/L) * math.sin(init_ang_pos)
 
@@ -18,8 +21,8 @@ ang_accel = [init_ang_accel]
 def pendulum_values(run_time, init_ang_pos, init_ang_vel):
     i = 1
     while i <= (run_time / dt):
-        time = list_of_times[i-1] + dt
-        list_of_times.append(time)
+        list_of_times.append(running_time())
+        # with microbit library imported
         new_ang_pos = ang_pos[i-1] + dt * ang_vel[i-1]
         ang_pos.append(new_ang_pos)
         new_ang_vel = ang_vel[i-1] + dt * ang_accel[i-1]
