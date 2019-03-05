@@ -1,6 +1,6 @@
 from microbit import *
 import math
-import Microbit_pendulum as mp
+import penvals as mp
 
 g = -9.81
 L = 1
