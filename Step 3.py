@@ -38,31 +38,27 @@ def pendulum_values(run_time, init_ang_pos, init_ang_vel, time0, m):
             i += 1
         return
 
+m = 0
+time0 = running_time()
+# change back to have user input run time
+run_time = 20
 while True:
-    m = 0
-    if button_a.is_pressed():
-        n = 0
-        time0 = running_time()
-        while True:
-            x = accelerometer.get_x()
-            y = accelerometer.get_y()
-            z = accelerometer.get_z()
+    x = accelerometer.get_x()
+    y = accelerometer.get_y()
+    z = accelerometer.get_z()
 
-            # change back to have user input run time
-            run_time = 20
-            init_ang_pos = tilt(x, y, z)  # this is coming from the microbit
-            # have time = 0 be when button is released when pendulum is released
-            init_ang_vel = 0
-            init_ang_accel = (g/L) * math.sin(init_ang_pos)
 
-            # lists that will be appended
-            list_of_times = [0]
-            ang_pos = [init_ang_pos]
-            ang_vel = [init_ang_vel]
-            ang_accel = [init_ang_accel]
+    init_ang_pos = tilt(x, y, z)  # this is coming from the microbit
+    # have time = 0 be when button is released when pendulum is released
+    init_ang_vel = 0
+    init_ang_accel = (g/L) * math.sin(init_ang_pos)
 
-            pendulum_values(run_time, init_ang_pos, init_ang_vel, time0, m)
+    # lists that will be appended
+    list_of_times = [0]
+    ang_pos = [init_ang_pos]
+    ang_vel = [init_ang_vel]
+    ang_accel = [init_ang_accel]
 
-            n += 1
+    pendulum_values(run_time, init_ang_pos, init_ang_vel, time0, m)
 
-        m += 1
+    m += 1
