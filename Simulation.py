@@ -19,14 +19,14 @@ def pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L,
         i += 1
     return
 
-def plot(list_of_times, ang_pos, ang_vel, ang_accel):
+def plot(list_of_times, ang_pos, ang_vel, ang_accel, original):
     plt.figure(figsize = (12, 12))
 
     plt.subplot(5, 1, 1)
     plt.plot(list_of_times, ang_pos, 'r-')
     plt.xlabel("Time (seconds)")
     plt.ylabel("Angular Position (radians)")
-    plt.title("Angular Position vs. Time")
+    plt.title("Angular Position vs. Time" + original)
     plt.xlim(0, 20)
     plt.grid()
 
@@ -34,7 +34,7 @@ def plot(list_of_times, ang_pos, ang_vel, ang_accel):
     plt.plot(list_of_times, ang_vel, 'b-')
     plt.xlabel("Time (seconds)")
     plt.ylabel("Angular Velocity (radians/second)")
-    plt.title("Angular Velocity vs. Time")
+    plt.title("Angular Velocity vs. Time" + original)
     plt.xlim(0, 20)
     plt.grid()
 
@@ -42,7 +42,7 @@ def plot(list_of_times, ang_pos, ang_vel, ang_accel):
     plt.plot(list_of_times, ang_accel, 'g-')
     plt.xlabel("Time (seconds)")
     plt.ylabel("Angular Acceleration (radians/second/second)")
-    plt.title("Angular Acceleration vs. Time")
+    plt.title("Angular Acceleration vs. Time" + original)
     plt.xlim(0, 20)
     plt.grid()
     return
