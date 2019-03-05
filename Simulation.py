@@ -19,14 +19,14 @@ def pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L,
         i += 1
     return
 
-def plot(list_of_times, ang_pos, ang_vel, ang_accel, original):
+def plot_pva(list_of_times, ang_pos, ang_vel, ang_accel):
     plt.figure(figsize = (12, 12))
 
     plt.subplot(5, 1, 1)
     plt.plot(list_of_times, ang_pos, 'r-')
     plt.xlabel("Time (seconds)")
     plt.ylabel("Angular Position (radians)")
-    plt.title("Angular Position vs. Time" + original)
+    plt.title("Angular Position vs. Time")
     plt.xlim(0, 20)
     plt.grid()
 
@@ -34,7 +34,7 @@ def plot(list_of_times, ang_pos, ang_vel, ang_accel, original):
     plt.plot(list_of_times, ang_vel, 'b-')
     plt.xlabel("Time (seconds)")
     plt.ylabel("Angular Velocity (radians/second)")
-    plt.title("Angular Velocity vs. Time" + original)
+    plt.title("Angular Velocity vs. Time")
     plt.xlim(0, 20)
     plt.grid()
 
@@ -42,7 +42,7 @@ def plot(list_of_times, ang_pos, ang_vel, ang_accel, original):
     plt.plot(list_of_times, ang_accel, 'g-')
     plt.xlabel("Time (seconds)")
     plt.ylabel("Angular Acceleration (radians/second/second)")
-    plt.title("Angular Acceleration vs. Time" + original)
+    plt.title("Angular Acceleration vs. Time")
     plt.xlim(0, 20)
     plt.grid()
     return
@@ -54,3 +54,28 @@ def apply_filter(y):
 def find_peaks(y):
     y_pks, _ = sig.find_peaks(y)
     return y_pks
+
+def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
+                  y_pks, y_noisy_pks, y_filt_pks, y_noisy_filt_pks):
+    plt.subplot(2, 2, 1)
+    plt.plot(list_of_times, y, 'r-', list_of_times[y_pks], y[y_pks], 'b.')
+    plt.title("Original")
+
+    plt.subplot(2, 2, 2)
+    plt.plot(list_of_times, y_noisy, 'r-', list_of_times[y_noisy_pks],
+             y[y_noisy_pks], 'b.')
+    plt.title("Noisy")
+
+    plt.subplot(2, 2, 3)
+    plt.plot(list_of_times, y_filt, 'r-', list_of_times[y_filt_pks],
+             y[y_filt_pks], 'b.')
+    plt.title("Original Median Filtered")
+
+    plt.subplot(2, 2, 4)
+    plt.plot(list_of_times, y_noisy_filt, 'r-',
+             list_of_times[y_noisy_filt_pks], y[y_noisy_filt_pks], 'b.')
+    plt.title("Noisy Median Filtered")
+
+    plt.tight_layout()
+    plt.show()
+    return
