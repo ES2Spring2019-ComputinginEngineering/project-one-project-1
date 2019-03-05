@@ -41,7 +41,7 @@ def pendulum_values(run_time, init_ang_pos, init_ang_vel, time0, m):
 m = 0
 time0 = running_time()
 # change back to have user input run time
-run_time = 10
+run_time = 5
 while True:
     x = accelerometer.get_x()
     y = accelerometer.get_y()
