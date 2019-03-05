@@ -20,7 +20,7 @@ def pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L,
     return
 
 def plot_pva(list_of_times, ang_pos, ang_vel, ang_accel):
-    plt.figure(figsize = (12, 12))
+    plt.figure(figsize=(12, 12))
 
     plt.subplot(5, 1, 1)
     plt.plot(list_of_times, ang_pos, 'r-')
