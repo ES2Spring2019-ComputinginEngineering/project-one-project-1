@@ -11,7 +11,7 @@ def tilt(x, y, z):  # getting data from accelerometer in microbit
     return yradians  # gets angle; main input for angular kinematic equations
 
 
-def all_pendulum_values_creation(name, data, m):  # file for data in each run
+def all_pendulum_valsues_creation(name, data, m):  # file for data in each run
     # input name defines which value type to look at out of time, pos, vel, and accel
     # input data is the list for that type of value
     # m is trial run number

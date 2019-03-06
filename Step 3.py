@@ -29,9 +29,9 @@ while True:
                        list_of_times, x, y, z, ang_pos, ang_vel, ang_accel,
                        g, L)
 
-    mp.all_pendulum_values_creation("time", list_of_times, m)
-    mp.all_pendulum_values_creation("position", ang_pos, m)
-    mp.all_pendulum_values_creation("velocity", ang_vel, m)
-    mp.all_pendulum_values_creation("acceleration", ang_accel, m)
+    mp.all_pendulum_values_creation("Time", list_of_times, m)
+    mp.all_pendulum_values_creation("Position", ang_pos, m)
+    mp.all_pendulum_values_creation("Velocity", ang_vel, m)
+    mp.all_pendulum_values_creation("Acceleration", ang_accel, m)
 
     m += 1
