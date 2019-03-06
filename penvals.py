@@ -4,11 +4,9 @@ import math
 g = -9.81
 L = 1
 # float(input("What is the length of this pendulum in meters? "))
-
 dt = .0001
 
 def tilt(x, y, z):  # getting data from accelerometer in microbit
-    # xradians = math.atan2(x, math.sqrt(y**2 + z**2))
     yradians = math.atan2(y, math.sqrt(x**2 + z**2))
     return yradians  # gets angle; main input for angular kinematic equations
 
