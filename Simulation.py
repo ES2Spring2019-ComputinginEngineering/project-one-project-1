@@ -84,9 +84,9 @@ def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
     plt.show()
     return
 
-def read_file(name, m):
-    array = []  # will be time, pos, vel, or accel; values collected by microbit
-    file = open(name + str(m) + ".csv")
+def read_file(m):
+    x = []  # will be time, pos, vel, or accel; values collected by microbit
+    file = open("Data" + str(m) + ".csv")
     for line in file:
         data_pt = line.strip()
         array.append(float(data_pt))
@@ -103,3 +103,7 @@ def plot_p(list_of_times, pos, run_time):
     plt.xlim(0, run_time)
     plt.grid()
     return
+
+def tilt(x, y, z):
+    yradians = math.atan2(y, math.sqrt(x**2 + z**2))
+    return yradians
