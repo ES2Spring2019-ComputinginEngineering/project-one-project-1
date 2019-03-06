@@ -1,15 +1,17 @@
 from microbit import *
 import math
 
-g = -9.81
-L = 1
-# float(input("What is the length of this pendulum in meters? "))
 dt = .0001
+run_time = 5
 
-def tilt(x, y, z):  # getting data from accelerometer in microbit
+# input data from microbit accelerometer to calculate and return
+# tilt of y-axis in radians
+def tilt(x, y, z):
     yradians = math.atan2(y, math.sqrt(x**2 + z**2))
-    return yradians  # gets angle; main input for angular kinematic equations
+    return yradians
 
+# input run time, empty arrays, and acclerometer data to calculate
+# the angular position of the microbit
 def position_values(run_time, list_of_times, ang_pos, x, y, z):
         i = 1
         while i <= (run_time / dt):
@@ -17,12 +19,11 @@ def position_values(run_time, list_of_times, ang_pos, x, y, z):
             new_ang_pos = tilt(x, y, z)
             ang_pos.append(new_ang_pos)
             i += 1
-        for x in range(len(list_of_times), 1, -1):
-            list_of_times[x] -= list_of_times[1]
+        for n in range(len(list_of_times), 1, -1):
+            list_of_times[n] -= list_of_times[1]
         return
 
-# change back to have user input run time
-run_time = 5
+# collect data from microbit accelerometer and
 while True:
     x = accelerometer.get_x()
     y = accelerometer.get_y()
