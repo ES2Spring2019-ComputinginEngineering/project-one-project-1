@@ -60,22 +60,24 @@ def find_peaks(y):
 def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
                   y_pks, y_noisy_pks, y_filt_pks, y_noisy_filt_pks):
     plt.subplot(2, 2, 1)
-    plt.plot(list_of_times, y, 'r-', list_of_times[y_pks], y[y_pks], 'b.')
+    for x in y_pks:
+        plt.plot(list_of_times, y, 'r-', list_of_times[x], y[x], 'b.')
     plt.title("Original")
 
     plt.subplot(2, 2, 2)
-    plt.plot(list_of_times, y_noisy, 'r-', list_of_times[y_noisy_pks],
-             y[y_noisy_pks], 'b.')
+    for x in y_noisy_pks:
+        plt.plot(list_of_times, y_noisy, 'r-', list_of_times[x], y[x], 'b.')
     plt.title("Noisy")
 
     plt.subplot(2, 2, 3)
-    plt.plot(list_of_times, y_filt, 'r-', list_of_times[y_filt_pks],
-             y[y_filt_pks], 'b.')
+    for x in y_filt_pks:
+        plt.plot(list_of_times, y_filt, 'r-', list_of_times[x], y[x], 'b.')
     plt.title("Original Median Filtered")
 
     plt.subplot(2, 2, 4)
-    plt.plot(list_of_times, y_noisy_filt, 'r-',
-             list_of_times[y_noisy_filt_pks], y[y_noisy_filt_pks], 'b.')
+    for x in y_noisy_filt_pks:
+        plt.plot(list_of_times, y_noisy_filt, 'r-', list_of_times[x], y[x],
+                 'b.')
     plt.title("Noisy Median Filtered")
 
     plt.tight_layout()
@@ -94,8 +96,7 @@ def read_file(name, m):
 def plot_p(list_of_times, pos, run_time):
     plt.figure(figsize=(12, 12))
 
-    plt.subplot(5, 1, 1)
-    plt.plot(list_of_times[:5001], pos, 'm-')
+    plt.plot(list_of_times, pos, 'm-')
     plt.xlabel("Time (seconds)")
     plt.ylabel("Position (radians)")
     plt.title("Position vs. Time")
