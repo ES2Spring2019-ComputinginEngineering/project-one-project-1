@@ -47,10 +47,12 @@ def plot_pva(list_of_times, ang_pos, ang_vel, ang_accel, run_time):
     plt.grid()
     return
 
+# returns an array of a median filtered y
 def apply_filter(y):
     y_filt = sig.medfilt(y)
     return y_filt
 
+#returns the indices in which y has peaks
 def find_peaks(y):
     y_pks, _ = sig.find_peaks(y)
     return y_pks
@@ -85,6 +87,18 @@ def read_file(name, m):
     file = open(name + str(m) + ".csv")
     for line in file:
         data_pt = line.strip()
-        array.append(data_pt)
+        array.append(float(data_pt))
     file.close()
     return array
+
+def plot_p(list_of_times, pos, run_time):
+    plt.figure(figsize=(12, 12))
+
+    plt.subplot(5, 1, 1)
+    plt.plot(list_of_times[:5001], pos, 'm-')
+    plt.xlabel("Time (seconds)")
+    plt.ylabel("Position (radians)")
+    plt.title("Position vs. Time")
+    plt.xlim(0, run_time)
+    plt.grid()
+    return
