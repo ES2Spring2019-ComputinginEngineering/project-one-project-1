@@ -58,34 +58,34 @@ def find_peaks(y):
     return y_pks
 
 def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
-                  y_pks, y_noisy_pks, y_filt_pks, y_noisy_filt_pks, run_time):
+                  y_pks, y_noisy_pks, y_filt_pks, y_noisy_filt_pks):
     plt.figure(figsize=(12, 12))
     
     plt.subplot(2, 2, 1)
     for x in y_pks:
         plt.plot(list_of_times, y, 'r-', list_of_times[x], y[x], 'b.')
     plt.title("Original")
-    plt.xlim(0, run_time)
+    # plt.xlim(0, run_time)
 
     plt.subplot(2, 2, 2)
     for x in y_noisy_pks:
         plt.plot(list_of_times[:len(y_noisy)], y_noisy, 'r-', list_of_times[x],
                  y[x], 'b.')
     plt.title("Noisy")
-    plt.xlim(0, run_time)
+    # plt.xlim(0, run_time)
 
     plt.subplot(2, 2, 3)
     for x in y_filt_pks:
         plt.plot(list_of_times, y_filt, 'r-', list_of_times[x], y[x], 'b.')
     plt.title("Original Median Filtered")
-    plt.xlim(0, run_time)
+    # plt.xlim(0, run_time)
 
     plt.subplot(2, 2, 4)
     for x in y_noisy_filt_pks:
         plt.plot(list_of_times[:len(y_noisy)], y_noisy_filt, 'r-',
                  list_of_times[x], y[x], 'b.')
     plt.title("Noisy Median Filtered")
-    plt.xlim(0, run_time)
+    # plt.xlim(0, run_time)
 
     plt.tight_layout()
     plt.show()
