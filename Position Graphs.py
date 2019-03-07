@@ -17,9 +17,6 @@ ang_accel = [init_ang_accel]
 
 sim.pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L,
                            list_of_times, ang_pos, ang_vel, ang_accel)
-sim.plot_pva(list_of_times, ang_pos, ang_vel, ang_accel, run_time)
-
-
 
 m = input("What run trial would you like to use? ")
 
