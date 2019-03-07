@@ -2,7 +2,7 @@ import math
 import matplotlib.pyplot as plt
 import scipy.signal as sig
 
-dt = .0001
+dt = .001
 
 def pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L,
                     list_of_times, ang_pos, ang_vel, ang_accel):
@@ -124,28 +124,38 @@ def tilt(x, y, z):
         yradians.append(ytilt)
     return yradians
 
-def find_period(pos):
-    avg = ((sum(pos))/(len(pos)))
-    i = 1
-    n = 1
-    time = []
-    diff = []
+"""def find_period(pos):
+    i, period = 0
+    MIN, MAX = []
     while i < len(pos):
-        if pos[i] == avg:
-            print(i/10000)
-        elif pos[i-1] < avg and pos[i] > avg:
-            print((i-0.5)/10000)
-        """if pos[i] == avg:
-            time.append(i/10000)
-            # print("time =: ", time)
-            i += 1
-        elif pos[i-1] < avg and pos[i] > avg:
-            time.append((i-0.5)/10000)
-            # print("time =: ", time)
-            i += 1
-    while n < len(time):
-        diff.append((time[n]) - time[n-1])
-        # print("diff = ", diff)
-        n += 1
-    period = sum(diff)/len(diff)"""
-    return avg
+        if pos[i] == min(pos):
+            MIN.append = i
+        elif pos[i] == max(pos):
+            MAX.append = i
+    filter_period(MAX, MIN)
+        period = (MAX - MIN) * 2
+    return period
+
+def filter_period(MAX, MIN, pos):
+    MAX1, MIN1 = []
+    if MAX[i] - MAX[i-1] range:
+        average
+        MAX1.append
+        else, append
+    if MIN[i] - MIN[i-1] range:
+        average
+        MIN1.append
+        else, append
+    while loop:
+        pos[i] == MIN1 or MAX
+    
+    
+def find_avg_period(p1, p2, p3, p4, p5):
+    pp1, pp2, pp3, pp4, pp5, avg = 0
+    pp1 = find_period(p1)
+    pp2 = find_period(p2)
+    pp3 = find_period(p3)
+    pp4 = find_period(p4)
+    pp5 = find_period(p5)
+    avg = (sum(pp1, pp2, pp3, pp4, pp5))/5
+    return avG"""

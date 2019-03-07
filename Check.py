@@ -15,7 +15,7 @@ while n < len(x) - 1:
     n += 1
 p = sim.tilt(x, y, z)
 sim.plot_p(t, p, 1)
-sim.
+
 # print(sim.find_period(p))
 
 """import math
