@@ -124,6 +124,32 @@ def tilt(x, y, z):
         yradians.append(ytilt)
     return yradians
 
+def find_period(pos):
+    i = 1
+    MAX = []
+    pos_peaks = sim.find_peaks(pos)
+    pos = filter_peaks(pos, pos_peaks)
+    while i < len(pos_peaks):
+        MAX.append((pos_peaks[i])-(pos_peaks[i-1]))
+        i += 1
+    period = sum(MAX)/len(MAX)
+    return period
+
+def filter_peaks(pos, pos_peaks):
+    MIN = 100
+    MAX, pkmin, pkmax = 0
+    med_time = median(pos_peaks)
+    for x in pos_peaks:
+        if (x < (med_time - RANGE)) or (x > (med_time + RANGE)):
+            remove(x) 
+    for x in pos_peaks:
+        if pos[x] < MIN:
+            pkmin = x
+            MIN = pos[x]
+        if pos[x] >= MAX
+            pkmax = x
+            MAX = [x]
+        if 
 """def find_period(pos):
     i, period = 0
     MIN, MAX = []

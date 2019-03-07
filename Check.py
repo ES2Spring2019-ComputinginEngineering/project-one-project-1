@@ -18,4 +18,15 @@ ang_accel = [init_ang_accel]
 sim.pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L,
                            list_of_times, ang_pos, ang_vel, ang_accel)
 
-print(sim.find_peaks(ang_pos))
+def find_period(pos):
+    i = 1
+    MAX = []
+    ang_pos_peaks = sim.find_peaks(ang_pos)
+    while i < len(ang_pos_peaks):
+        MAX.append((ang_pos_peaks[i])-(ang_pos_peaks[i-1]))
+        i += 1
+    period = sum(MAX)/len(MAX)
+    return period
+
+period = find_period(ang_pos)
+print(period)
