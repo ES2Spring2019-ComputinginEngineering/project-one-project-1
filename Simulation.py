@@ -58,28 +58,32 @@ def find_peaks(y):
     return y_pks
 
 def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
-                  y_pks, y_noisy_pks, y_filt_pks, y_noisy_filt_pks):
+                  y_pks, y_noisy_pks, y_filt_pks, y_noisy_filt_pks, """run_time"""):
     plt.subplot(2, 2, 1)
     for x in y_pks:
         plt.plot(list_of_times, y, 'r-', list_of_times[x], y[x], 'b.')
     plt.title("Original")
+    # plt.xlim(0, run_time)
 
     plt.subplot(2, 2, 2)
     for x in y_noisy_pks:
         plt.plot(list_of_times[:len(y_noisy)], y_noisy, 'r-', list_of_times[x],
                  y[x], 'b.')
     plt.title("Noisy")
+    # plt.xlim(0, run_time)
 
     plt.subplot(2, 2, 3)
     for x in y_filt_pks:
         plt.plot(list_of_times, y_filt, 'r-', list_of_times[x], y[x], 'b.')
     plt.title("Original Median Filtered")
+    # plt.xlim(0, run_time)
 
     plt.subplot(2, 2, 4)
     for x in y_noisy_filt_pks:
         plt.plot(list_of_times[:len(y_noisy)], y_noisy_filt, 'r-',
                  list_of_times[x], y[x], 'b.')
     plt.title("Noisy Median Filtered")
+    # plt.xlim(0, run_time)
 
     plt.tight_layout()
     plt.show()
@@ -95,11 +99,8 @@ def read_file(m):
     for line in file:
         s = line.split(delimiter)
         x.append(float(s[0]))
-        print("x: ", x)
         y.append(float(s[1]))
-        print("y: ", y)
         z.append(float(s[2]))
-        print("z: ", z)
     file.close()
     return x, y, z
 
@@ -110,9 +111,8 @@ def plot_p(list_of_times, pos, run_time):
     plt.xlabel("Time (seconds)")
     plt.ylabel("Position (radians)")
     plt.title("Position vs. Time")
-    plt.xlim(0, run_time)
-    plt.ylim(min(pos), max(pos))
     plt.grid()
+    plt.xlim(0, run_time)
     return
 
 def tilt(x, y, z):
@@ -121,3 +121,11 @@ def tilt(x, y, z):
         ytilt = math.atan2(y[n], math.sqrt(x[n]**2 + z[n]**2))
         yradians.append(ytilt)
     return yradians
+
+def make_time_list(x):
+    rt = []
+    n = 0
+    while n < len(x) - 1:
+        rt.append(n/1000)
+        n += 1
+    return rt
