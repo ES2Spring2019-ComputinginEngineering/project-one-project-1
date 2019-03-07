@@ -124,10 +124,28 @@ def tilt(x, y, z):
         yradians.append(ytilt)
     return yradians
 
-def make_time_list(x):
-    rt = []
-    n = 0
-    while n < len(x) - 1:
-        rt.append(n/1000)
+def find_period(pos):
+    avg = ((sum(pos))/(len(pos)))
+    i = 1
+    n = 1
+    time = []
+    diff = []
+    while i < len(pos):
+        if pos[i] == avg:
+            print(i/10000)
+        elif pos[i-1] < avg and pos[i] > avg:
+            print((i-0.5)/10000)
+        """if pos[i] == avg:
+            time.append(i/10000)
+            # print("time =: ", time)
+            i += 1
+        elif pos[i-1] < avg and pos[i] > avg:
+            time.append((i-0.5)/10000)
+            # print("time =: ", time)
+            i += 1
+    while n < len(time):
+        diff.append((time[n]) - time[n-1])
+        # print("diff = ", diff)
         n += 1
-    return rt
+    period = sum(diff)/len(diff)"""
+    return avg
