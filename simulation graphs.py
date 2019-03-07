@@ -22,7 +22,7 @@ sim.plot_pva(list_of_times, ang_pos, ang_vel, ang_accel, run_time)
 m = input("What run trial would you like to use? ")
 
 x, y, z = sim.read_file(m)
-t = sim.read_file(m)
+pos = sim.tilt(x, y, z)
 
 ang_pos_filt = sim.apply_filter(ang_pos)
 pos_filt = sim.apply_filter(pos)

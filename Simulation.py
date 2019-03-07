@@ -66,7 +66,8 @@ def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
 
     plt.subplot(2, 2, 2)
     for x in y_noisy_pks:
-        plt.plot(list_of_times, y_noisy, 'r-', list_of_times[x], y[x], 'b.')
+        plt.plot(list_of_times[:len(y_noisy)], y_noisy, 'r-', list_of_times[x],
+                 y[x], 'b.')
     plt.title("Noisy")
 
     plt.subplot(2, 2, 3)
@@ -76,8 +77,8 @@ def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
 
     plt.subplot(2, 2, 4)
     for x in y_noisy_filt_pks:
-        plt.plot(list_of_times, y_noisy_filt, 'r-', list_of_times[x], y[x],
-                 'b.')
+        plt.plot(list_of_times[:len(y_noisy)], y_noisy_filt, 'r-',
+                 list_of_times[x], y[x], 'b.')
     plt.title("Noisy Median Filtered")
 
     plt.tight_layout()
@@ -110,9 +111,13 @@ def plot_p(list_of_times, pos, run_time):
     plt.ylabel("Position (radians)")
     plt.title("Position vs. Time")
     plt.xlim(0, run_time)
+    plt.ylim(min(pos), max(pos))
     plt.grid()
     return
 
 def tilt(x, y, z):
-    yradians = math.atan2(y, math.sqrt(x**2 + z**2))
+    yradians = []
+    for n in range(0, len(x) - 1):
+        ytilt = math.atan2(y[n], math.sqrt(x[n]**2 + z[n]**2))
+        yradians.append(ytilt)
     return yradians
