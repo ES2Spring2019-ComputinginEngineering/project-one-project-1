@@ -21,10 +21,8 @@ sim.plot_pva(list_of_times, ang_pos, ang_vel, ang_accel, run_time)
 
 m = input("What run trial would you like to use? ")
 
-pos = sim.read_file("Position", m)
-vel = sim.read_file("Velocity", m)
-accel = sim.read_file("Acceleration", m)
-t = sim.read_file("Time", m)
+x, y, z = sim.read_file(m)
+t = sim.read_file(m)
 
 ang_pos_filt = sim.apply_filter(ang_pos)
 pos_filt = sim.apply_filter(pos)

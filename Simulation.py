@@ -85,13 +85,22 @@ def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
     return
 
 def read_file(m):
-    x = []  # will be time, pos, vel, or accel; values collected by microbit
-    file = open("Data" + str(m) + ".csv")
+    x = []
+    y = []
+    z = []
+    delimiter = ','
+    filename = "Data" + str(m) + ".csv"
+    file = open(filename, 'r')
     for line in file:
-        data_pt = line.strip()
-        array.append(float(data_pt))
+        s = line.split(delimiter)
+        x.append(float(s[0]))
+        print("x: ", x)
+        y.append(float(s[1]))
+        print("y: ", y)
+        z.append(float(s[2]))
+        print("z: ", z)
     file.close()
-    return array
+    return x, y, z
 
 def plot_p(list_of_times, pos, run_time):
     plt.figure(figsize=(12, 12))
