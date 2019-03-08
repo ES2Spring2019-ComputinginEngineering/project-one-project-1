@@ -2,7 +2,7 @@ import math
 import Simulation as sim
 
 g = -9.81
-L = 
+L = .2286
 
 run_time = 5
 init_ang_pos = (math.pi)/6

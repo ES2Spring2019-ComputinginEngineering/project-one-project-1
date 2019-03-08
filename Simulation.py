@@ -170,10 +170,8 @@ def filter_range(pos_peaks):
     
 def find_nearest(arraya, value):
     arrayb = np.asarray(arraya)
-    j = 0
-    for j in arrayb:
-        i = np.argmin(abs(arrayb[j]-value))
-        j += 0
+    for x in arrayb:
+        i = np.argmin(abs(x-value))
     return arrayb[i]
             
 """def find_period(pos):
