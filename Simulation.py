@@ -163,7 +163,7 @@ def filter_range(pos_peaks):
     med_array = find_nearest(array, med_time)
     for x in pos_peaks[MIN:MAX]:
         if x != med_array:
-            remove(x)
+            pos_peaks.remove(x)
     return
     
 def find_nearest(array, value):
