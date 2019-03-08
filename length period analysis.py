@@ -2,7 +2,7 @@
 
 import matplotlib as plt
 
-length = ["""lengths for each trial"""]
+length = [.2413, ]
 period_simulation = ["""periods corresponding to each length from the trials"""]
 period_data = ["""periods corresponding to each length from the trials"""]
 

@@ -154,12 +154,12 @@ def filter_range(pos_peaks):
     array = []
     position_peaks = [pos_peaks]
     while i < len(position_peaks):
-        if (array == []) and ((pos_peaks[i] - pos_peaks[i-1]) <= 0.01): 
-            array.append(pos_peaks[i-1])
-            array.append(pos_peaks[i])
+        if (array == []) and ((position_peaks[i] - position_peaks[i-1]) <= 0.01): 
+            array.append(position_peaks[i-1])
+            array.append(position_peaks[i])
             MIN = i-1
-        elif ((pos_peaks[i] - pos_peaks[i-1]) <= 0.01) and ((pos_peaks[i-1] - array[i]) <= 0.01):
-                array.append(pos_peaks[i])
+        elif ((position_peaks[i] - position_peaks[i-1]) <= 0.01) and ((position_peaks[i-1] - array[i]) <= 0.01):
+                array.append(position_peaks[i])
                 MAX = i
     med_time = np.median(pos_peaks)
     med_array = find_nearest(array, med_time)
@@ -168,11 +168,13 @@ def filter_range(pos_peaks):
             pos_peaks.remove(x)
     return pos_peaks
     
-def find_nearest(array, value):
-    array = np.asarray(array)
-    for x in array:
-        i = np.argmin(abs(x-value))
-    return array[i]
+def find_nearest(arraya, value):
+    arrayb = np.asarray(arraya)
+    j = 0
+    for j in arrayb:
+        i = np.argmin(abs(arrayb[j]-value))
+        j += 0
+    return arrayb[i]
             
 """def find_period(pos):
     i, period = 0
