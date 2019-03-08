@@ -1,4 +1,4 @@
-""" ReadMe for Jenney/Wong 
+ReadMe for Jenney/Wong 
 
 1. Data collection code for micro:bit using MU Editor:
     Step 3.py
@@ -15,4 +15,4 @@
     Position Graphs.py
     
 5. Analyzing Relationships between Period and Length:
-    
+    length period analysis.py
