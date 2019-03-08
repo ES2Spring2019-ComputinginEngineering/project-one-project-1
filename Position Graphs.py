@@ -29,7 +29,12 @@ x, y, z = sim.read_file(m)
 
 pos = sim.tilt(x, y, z)
 
-sim.plot_p(list_of_times, pos, run_time)
+# gets length of pos equal to length of list_of_times/10
+pos.pop()
+pos.pop()
+pos.pop()
+
+sim.plot_p(list_of_times[0::10], pos, run_time)
 
 """ang_pos_filt = sim.apply_filter(ang_pos)
 pos_filt = sim.apply_filter(pos)
