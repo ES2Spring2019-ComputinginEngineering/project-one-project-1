@@ -108,6 +108,8 @@ def read_file(m):
     return x, y, z
 
 def plot_p(list_of_times, pos, run_time):
+    plt.figure(figsize=(12, 12))
+
     plt.plot(list_of_times, pos, 'm-')
     plt.xlabel("Time (seconds)")
     plt.ylabel("Position (radians)")
