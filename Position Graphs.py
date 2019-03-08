@@ -15,7 +15,7 @@ ang_pos = [init_ang_pos]
 ang_vel = [init_ang_vel]
 ang_accel = [init_ang_accel]
 
-m = input("What run trial would you like to use? ")
+m = 7862  # input("What file number would you like to use? ")
 
 sim.pendulum_values(run_time, init_ang_pos, init_ang_vel, g, L,
                            list_of_times, ang_pos, ang_vel, ang_accel)

@@ -128,7 +128,7 @@ def tilt(x, y, z):
 def find_period(pos):
     i = 1
     MAX = []
-    pos_peaks = sim.find_peaks(pos)
+    pos_peaks = find_peaks(pos)
     pos = filter_peaks(pos, pos_peaks)
     while i < len(pos_peaks):
         MAX.append((pos_peaks[i])-(pos_peaks[i-1]))
@@ -138,37 +138,40 @@ def find_period(pos):
 
 def filter_peaks(pos_peaks):
     filter_range(pos_peaks)
-    if peaks != len(pos(peaks)):
+    peaks = np.ndarray.size(pos_peaks)
+    if peaks != np.ndarray.size(pos_peaks):
         filter_range(pos_peaks)
-    med_time = median(pos_peaks)
+    med_time = np.median(pos_peaks)
     for x in pos_peaks:
         if (x < (med_time - 0.2)) or (x > (med_time + 0.2)):
-            remove(x)
-    peaks = len(pos_peaks)
+            pos_peaks.remove(x)
     return
     
 def filter_range(pos_peaks):
     i = 1
-    MIN, MAX = 0
+    MIN = 0
+    MAX = 0
     array = []
-    while i < len(pos_peaks):
+    position_peaks = [pos_peaks]
+    while i < len(position_peaks):
         if (array == []) and ((pos_peaks[i] - pos_peaks[i-1]) <= 0.01): 
-            array.append(pos_peak[i-1])
-            array.append(pos_peak[i])
+            array.append(pos_peaks[i-1])
+            array.append(pos_peaks[i])
             MIN = i-1
-        elif ((pos_peaks[i] - pos_peaks[i-1]) <= 0.01) and ((pos_peak[i-1] - array[i]) <= 0.01):
-                array.append(pos_peak[i])
+        elif ((pos_peaks[i] - pos_peaks[i-1]) <= 0.01) and ((pos_peaks[i-1] - array[i]) <= 0.01):
+                array.append(pos_peaks[i])
                 MAX = i
-    med_time = median(pos_peaks)
+    med_time = np.median(pos_peaks)
     med_array = find_nearest(array, med_time)
     for x in pos_peaks[MIN:MAX]:
         if x != med_array:
             pos_peaks.remove(x)
-    return
+    return pos_peaks
     
 def find_nearest(array, value):
     array = np.asarray(array)
-    i = (abs(array - value)).argmin()
+    for x in array:
+        i = np.argmin(abs(x-value))
     return array[i]
             
 """def find_period(pos):
@@ -194,15 +197,4 @@ def filter_period(MAX, MIN, pos):
         MIN1.append
         else, append
     while loop:
-        pos[i] == MIN1 or MAX
-    
-    
-def find_avg_period(p1, p2, p3, p4, p5):
-    pp1, pp2, pp3, pp4, pp5, avg = 0
-    pp1 = find_period(p1)
-    pp2 = find_period(p2)
-    pp3 = find_period(p3)
-    pp4 = find_period(p4)
-    pp5 = find_period(p5)
-    avg = (sum(pp1, pp2, pp3, pp4, pp5))/5
-    return avG"""
+        pos[i] == MIN1 or MAX"""
