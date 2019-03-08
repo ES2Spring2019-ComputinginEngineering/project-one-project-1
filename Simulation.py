@@ -138,13 +138,13 @@ def find_period(pos):
 
 def filter_peaks(pos_peaks):
     filter_range(pos_peaks)
-    if peaks != len(pos(peaks)):
+    peaks = np.ndarray.size(pos_peaks)
+    if peaks != len(pos_peaks):
         filter_range(pos_peaks)
     med_time = np.median(pos_peaks)
     for x in pos_peaks:
         if (x < (med_time - 0.2)) or (x > (med_time + 0.2)):
-            remove(x)
-    peaks = np.ndarray.size(pos_peaks)
+            pos_peaks.remove(x)
     return
     
 def filter_range(pos_peaks):
