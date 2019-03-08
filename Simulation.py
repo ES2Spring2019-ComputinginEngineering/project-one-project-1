@@ -1,6 +1,7 @@
 import math
 import matplotlib.pyplot as plt
 import scipy.signal as sig
+import numpy as np
 
 dt = .001
 
@@ -135,21 +136,41 @@ def find_period(pos):
     period = sum(MAX)/len(MAX)
     return period
 
-def filter_peaks(pos, pos_peaks):
-    MIN = 100
-    MAX, pkmin, pkmax = 0
+def filter_peaks(pos_peaks):
+    filter_range(pos_peaks)
+    if peaks != len(pos(peaks)):
+        filter_range(pos_peaks)
     med_time = median(pos_peaks)
     for x in pos_peaks:
-        if (x < (med_time - RANGE)) or (x > (med_time + RANGE)):
-            remove(x) 
-    for x in pos_peaks:
-        if pos[x] < MIN:
-            pkmin = x
-            MIN = pos[x]
-        if pos[x] >= MAX
-            pkmax = x
-            MAX = [x]
-        if 
+        if (x < (med_time - 0.2)) or (x > (med_time + 0.2)):
+            remove(x)
+    peaks = len(pos_peaks)
+    return
+    
+def filter_range(pos_peaks):
+    i = 1
+    MIN, MAX = 0
+    array = []
+    while i < len(pos_peaks):
+        if (array == []) and ((pos_peaks[i] - pos_peaks[i-1]) <= 0.01): 
+            array.append(pos_peak[i-1])
+            array.append(pos_peak[i])
+            MIN = i-1
+        elif ((pos_peaks[i] - pos_peaks[i-1]) <= 0.01) and ((pos_peak[i-1] - array[i]) <= 0.01):
+                array.append(pos_peak[i])
+                MAX = i
+    med_time = median(pos_peaks)
+    med_array = find_nearest(array, med_time)
+    for x in pos_peaks[MIN:MAX]:
+        if x != med_array:
+            remove(x)
+    return
+    
+def find_nearest(array, value):
+    array = np.asarray(array)
+    i = (abs(array - value)).argmin()
+    return array[i]
+            
 """def find_period(pos):
     i, period = 0
     MIN, MAX = []
