@@ -42,7 +42,7 @@ pos_filt = sim.apply_filter(pos)
 ang_pos_peaks = sim.find_peaks(ang_pos_filt)
 pos_peaks = sim.find_peaks(pos)
 ang_pos_filt_peaks = sim.find_peaks(ang_pos_filt)
-pos_filt_peaks = sim.filter_peaks(sim.find_peaks(pos_filt))
+pos_filt_peaks = sim.filter_peaks(pos_filt)
 
 sim.plot_filtered(list_of_times, ang_pos, pos, ang_pos_filt, pos_filt,
                   ang_pos_peaks, pos_peaks, ang_pos_filt_peaks, pos_filt_peaks, run_time)

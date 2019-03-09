@@ -128,8 +128,8 @@ def tilt(x, y, z):
 def find_period(pos):
     i = 1
     MAX = []
-    pos_peaks = find_peaks(pos)
-    pos = filter_peaks(pos, pos_peaks)
+    pos_peaks = list(sig.find_peaks(pos))
+    pos = filter_peaks(pos_peaks)
     while i < len(pos_peaks):
         MAX.append((pos_peaks[i])-(pos_peaks[i-1]))
         i += 1
@@ -137,9 +137,8 @@ def find_period(pos):
     return period
 
 def filter_peaks(pos_peaks):
-    filter_range(pos_peaks)
-    peaks = np.ndarray.size(pos_peaks)
-    if peaks != np.ndarray.size(pos_peaks):
+    peaks = len(pos_peaks)
+    if peaks != len(pos_peaks):
         filter_range(pos_peaks)
     med_time = np.median(pos_peaks)
     for x in pos_peaks:
@@ -159,25 +158,21 @@ def filter_range(pos_peaks):
             array.append(position_peaks[i])
             MIN = i-1
         elif ((position_peaks[i] - position_peaks[i-1]) <= 0.01) and ((position_peaks[i-1] - array[i]) <= 0.01):
-                array.append(position_peaks[i])
-                MAX = i
-    med_time = np.median(pos_peaks)
+            array.append(position_peaks[i])
+            MAX = i
+        i += 1
+    med_time = np.median(position_peaks)
     med_time = np.asarray(med_time)
     med_array = find_nearest(array, med_time)
-    for x in pos_peaks[MIN:MAX]:
+    for x in position_peaks[MIN:MAX]:
         if x != med_array:
-            pos_peaks.remove(x)
-    return pos_peaks
+            position_peaks.remove(x)
+    return position_peaks
     
 def find_nearest(arraya, value):
-    arrayb = np.asarray(arraya)
-    i = 0
-    for i in arrayb:
-        j = np.argmin(abs(arrayb[i] - value[i]))
-        i += 0
-    return j
-
-print(np.argmin(abs(12-7)))
+    arrayb = (np.asarray(arraya) - value)
+    i = np.argmin(arrayb)
+    return i
             
 """def find_period(pos):
     i, period = 0
@@ -202,4 +197,5 @@ def filter_period(MAX, MIN, pos):
         MIN1.append
         else, append
     while loop:
-        pos[i] == MIN1 or MAX"""
+        pos[i] == MIN1 or MAX 
+        """
