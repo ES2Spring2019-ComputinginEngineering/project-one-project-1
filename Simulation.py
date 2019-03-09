@@ -141,7 +141,7 @@ def filter_peaks(pos_peaks):
     # filter_range(pos_peaks)
     med_time = np.median(pos_peaks)
     for x in pos_peaks:
-        if (float(x) < (med_time - 0.2)) or (float(x) > (med_time + 0.2)):
+        if (x < (med_time - 0.2)) or (x > (med_time + 0.2)):
             position_peaks.remove(x)
     return position_peaks
     
@@ -180,11 +180,29 @@ def find_nearest(arraya, value):
     j = np.argmin(arrayb)
     i = list(j)
     return i
-
-def create_list_of_times(pos):
-    i = 0
-    n = []
+            
+"""def find_period(pos):
+    i, period = 0
+    MIN, MAX = []
     while i < len(pos):
-        n.append(i/10)
-        i += 1
-    return n
+        if pos[i] == min(pos):
+            MIN.append = i
+        elif pos[i] == max(pos):
+            MAX.append = i
+    filter_period(MAX, MIN)
+        period = (MAX - MIN) * 2
+    return period
+
+def filter_period(MAX, MIN, pos):
+    MAX1, MIN1 = []
+    if MAX[i] - MAX[i-1] range:
+        average
+        MAX1.append
+        else, append
+    if MIN[i] - MIN[i-1] range:
+        average
+        MIN1.append
+        else, append
+    while loop:
+        pos[i] == MIN1 or MAX 
+        """
