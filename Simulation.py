@@ -129,49 +129,49 @@ def find_period(pos):
     i = 1
     MAX = []
     pos_peaks = list(sig.find_peaks(pos))
-    pos = filter_peaks(pos_peaks)
+    pos = list(filter_peaks(pos_peaks))
     while i < len(pos_peaks):
-        MAX.append((pos_peaks[i])-(pos_peaks[i-1]))
+        MAX.append((pos[i])-(pos[i-1]))
         i += 1
     period = sum(MAX)/len(MAX)
     return period
 
 def filter_peaks(pos_peaks):
-    peaks = len(pos_peaks)
-    if peaks != len(pos_peaks):
-        filter_range(pos_peaks)
+    position_peaks = list(pos_peaks)
+    filter_range(pos_peaks)
     med_time = np.median(pos_peaks)
     for x in pos_peaks:
         if (x < (med_time - 0.2)) or (x > (med_time + 0.2)):
-            pos_peaks.remove(x)
-    return
+            position_peaks.remove(x)
+    return position_peaks
     
 def filter_range(pos_peaks):
     i = 1
     MIN = 0
     MAX = 0
     array = []
-    position_peaks = [pos_peaks]
+    position_peaks = list(pos_peaks)
     while i < len(position_peaks):
         if (array == []) and ((position_peaks[i] - position_peaks[i-1]) <= 0.01): 
-            array.append(position_peaks[i-1])
-            array.append(position_peaks[i])
+            array.append(pos_peaks[i-1])
+            array.append(pos_peaks[i])
             MIN = i-1
         elif ((position_peaks[i] - position_peaks[i-1]) <= 0.01) and ((position_peaks[i-1] - array[i]) <= 0.01):
-            array.append(position_peaks[i])
+            array.append(pos_peaks[i])
             MAX = i
         i += 1
-    med_time = np.median(position_peaks)
+    med_time = np.median(pos_peaks)
     med_time = np.asarray(med_time)
     med_array = find_nearest(array, med_time)
     for x in position_peaks[MIN:MAX]:
         if x != med_array:
-            position_peaks.remove(x)
-    return position_peaks
+            pos_peaks.remove(x)
+    return pos_peaks
     
 def find_nearest(arraya, value):
     arrayb = (np.asarray(arraya) - value)
-    i = np.argmin(arrayb)
+    j = np.argmin(arrayb)
+    i = list(j)
     return i
             
 """def find_period(pos):

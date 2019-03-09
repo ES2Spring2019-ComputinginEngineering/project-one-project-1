@@ -29,20 +29,24 @@ x, y, z = sim.read_file(m)
 
 pos = sim.tilt(x, y, z)
 
-# gets length of pos equal to length of list_of_times/10
+"""# gets length of pos equal to length of list_of_times/10
 pos.pop()
 pos.pop()
 pos.pop()
 
 sim.plot_p(list_of_times[0::10], pos, run_time)
 
-ang_pos_filt = sim.apply_filter(ang_pos)
+ang_pos_filt = sim.apply_filter(ang_pos)"""
 pos_filt = sim.apply_filter(pos)
 
-ang_pos_peaks = sim.find_peaks(ang_pos_filt)
+print(sim.filter_peaks(pos_filt))
+
+"""ang_pos_peaks = sim.find_peaks(ang_pos_filt)
 pos_peaks = sim.find_peaks(pos)
 ang_pos_filt_peaks = sim.find_peaks(ang_pos_filt)
 pos_filt_peaks = sim.filter_peaks(pos_filt)
 
 sim.plot_filtered(list_of_times, ang_pos, pos, ang_pos_filt, pos_filt,
                   ang_pos_peaks, pos_peaks, ang_pos_filt_peaks, pos_filt_peaks, run_time)
+
+sim.find_period(pos)"""
