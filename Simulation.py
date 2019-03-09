@@ -180,29 +180,11 @@ def find_nearest(arraya, value):
     j = np.argmin(arrayb)
     i = list(j)
     return i
-            
-"""def find_period(pos):
-    i, period = 0
-    MIN, MAX = []
-    while i < len(pos):
-        if pos[i] == min(pos):
-            MIN.append = i
-        elif pos[i] == max(pos):
-            MAX.append = i
-    filter_period(MAX, MIN)
-        period = (MAX - MIN) * 2
-    return period
 
-def filter_period(MAX, MIN, pos):
-    MAX1, MIN1 = []
-    if MAX[i] - MAX[i-1] range:
-        average
-        MAX1.append
-        else, append
-    if MIN[i] - MIN[i-1] range:
-        average
-        MIN1.append
-        else, append
-    while loop:
-        pos[i] == MIN1 or MAX 
-        """
+def create_list_of_times(pos):
+    i = 0
+    n = []
+    while i < len(pos):
+        n.append(i/10)
+        i += 1
+    return n
