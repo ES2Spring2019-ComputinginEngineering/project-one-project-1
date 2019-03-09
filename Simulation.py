@@ -162,6 +162,7 @@ def filter_range(pos_peaks):
                 array.append(position_peaks[i])
                 MAX = i
     med_time = np.median(pos_peaks)
+    med_time = np.asarray(med_time)
     med_array = find_nearest(array, med_time)
     for x in pos_peaks[MIN:MAX]:
         if x != med_array:
@@ -170,9 +171,13 @@ def filter_range(pos_peaks):
     
 def find_nearest(arraya, value):
     arrayb = np.asarray(arraya)
-    for x in arrayb:
-        i = np.argmin(abs(x-value))
-    return arrayb[i]
+    i = 0
+    for i in arrayb:
+        j = np.argmin(abs(arrayb[i] - value[i]))
+        i += 0
+    return j
+
+print(np.argmin(abs(12-7)))
             
 """def find_period(pos):
     i, period = 0
