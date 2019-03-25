@@ -6,8 +6,8 @@ m = random.randint(0, 999)
 filename = "Data" + str(m) + ".csv"
 file = open(filename, 'w')
 n = 0
-while n < 505:
-    microbit.sleep(10)
+while n < 1700:
+    microbit.sleep(3)
     x = str(microbit.accelerometer.get_x())
     y = str(microbit.accelerometer.get_y())
     z = str(microbit.accelerometer.get_z())
