@@ -56,6 +56,7 @@ def apply_filter(y):
 #returns the indices in which y has peaks
 def find_peaks(y):
     y_pks, _ = sig.find_peaks(y)
+    y_pks.astype(int)
     return y_pks
 
 def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
@@ -185,6 +186,6 @@ def create_list_of_times(pos):
     i = 0
     n = []
     while i < len(pos):
-        n.append(i/10)
+        n.append(i/3)
         i += 1
     return n
