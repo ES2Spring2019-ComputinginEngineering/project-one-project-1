@@ -9,7 +9,7 @@ L = .2413
 g = -9.81
 
 m = input("What file number would you like to use? ")
-L = sim.length(5)
+L = sim.length(1)
 
 run_time = 5
 init_ang_pos = (math.pi)/6
@@ -49,4 +49,5 @@ pos_filt_peaks = sim.find_peaks(pos_filt)
 sim.plot_filtered(list_of_times, list_of_times1, ang_pos, pos, ang_pos_filt, pos_filt,
                   ang_pos_peaks, pos_peaks, ang_pos_filt_peaks, pos_filt_peaks, run_time)
 
-# print(sim.find_period(pos))
+print("simulated: ", sim.find_period(ang_pos_peaks))
+print("actual: ", sim.find_period(pos_filt_peaks))

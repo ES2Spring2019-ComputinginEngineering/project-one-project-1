@@ -126,13 +126,11 @@ def tilt(x, y, z):
         yradians.append(ytilt)
     return yradians
 
-def find_period(pos):
+def find_period(pos_peaks):
     i = 1
     MAX = []
-    pos_peaks = list(sig.find_peaks(pos))
-    pos = list(filter_peaks(pos_peaks))
     while i < len(pos_peaks):
-        MAX.append((pos[i])-(pos[i-1]))
+        MAX.append((pos_peaks[i])-(pos_peaks[i-1]))
         i += 1
     period = sum(MAX)/len(MAX)
     return period
