@@ -59,7 +59,7 @@ def find_peaks(y):
     y_pks.astype(int)
     return y_pks
 
-def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
+def plot_filtered(list_of_times, list_of_times1, y, y_noisy, y_filt, y_noisy_filt,
                   y_pks, y_noisy_pks, y_filt_pks, y_noisy_filt_pks, run_time):
     plt.figure(figsize=(12, 12))
     
@@ -71,22 +71,22 @@ def plot_filtered(list_of_times, y, y_noisy, y_filt, y_noisy_filt,
 
     plt.subplot(2, 2, 2)
     for x in y_noisy_pks:
-        plt.plot(list_of_times[:len(y_noisy)], y_noisy, 'r-', list_of_times[x],
-                 y[x], 'b.')
+        plt.plot(list_of_times1, y_noisy, 'r-', list_of_times1[x],
+                 y_noisy[x], 'b.')
     plt.title("Noisy")
     plt.xlim(0, run_time)
 
     plt.subplot(2, 2, 3)
     for x in y_filt_pks:
-        plt.plot(list_of_times, y_filt, 'r-', list_of_times[x], y[x], 'b.')
+        plt.plot(list_of_times, y_filt, 'r-', list_of_times[x], y_filt[x], 'b.')
     plt.title("Original Median Filtered")
     plt.xlim(0, run_time)
 
     plt.subplot(2, 2, 4)
     for x in y_noisy_filt_pks:
-        plt.plot(list_of_times[:len(y_noisy)], y_noisy_filt, 'r-',
-                 list_of_times[x], y[x], 'b.')
-    plt.title("Noisy Median Filtered")
+        plt.plot(list_of_times1, y_noisy_filt, 'r-',
+                 list_of_times1[x], y_noisy_filt[x], 'b.')
+    plt.title("Noisy Filtered")
     plt.xlim(0, run_time)
 
     plt.tight_layout()
@@ -189,3 +189,20 @@ def create_list_of_times(pos):
         n.append(i/3)
         i += 1
     return n
+
+def length(m):
+    length = 0
+    if m == 1:
+        length = 0.241
+    elif m == 2:
+        length = 0.356
+    elif m == 3:
+        length = 0.279
+    elif m == 4:
+        length = 0.343
+    elif m == 5:
+        length = 0.165
+    else:
+        print("not valid input")
+    # print(m, length)
+    return length
